@@ -8,6 +8,12 @@ var // Modules
     deporder = require('gulp-deporder'),
     stripdebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
+    sass = require('gulp-sass'),
+    postcss = require('gulp-postcss'),
+    assets = require('postcss-assets'),
+    autoprefixer = require('autoprefixer'),
+    mqpacker = require('css-mqpacker'),
+    cssnano = require('cssnano'),
 
     // Dev mode?
     devBuild = (process.env.NODE_ENV !== 'production'),
@@ -57,3 +63,44 @@ gulp.task('js', function() {
 
     return jsbuild.pipe(gulp.dest(folder.dist + 'js/'));
 });
+
+// CSS Task
+gulp.task('css', ['images'], function() {
+    var postCssOpts = [
+        assets({ loadPaths: ['images/'] }),
+        autoprefixer({ browsers: ['last 2 versions', '> 2%'] }),
+        mqpacker
+    ];
+    
+    if(!devBuild) {
+        postCssOpts.push(cssnano);
+    }
+
+    return gulp.src(folder.src + 'scss/main.scss')
+        .pipe(sass({
+            outputStyle: 'nested',
+            imagePath: 'images/',
+            precision: 3,
+            errLogToConsole: true
+        }))
+        .pipe(postcss(postCssOpts))
+        .pipe(gulp.dest(folder.dist + 'css/'));
+});
+
+// Run all Tasks
+
+gulp.task('run', ['html', 'css', 'js']);
+
+// Watch All Tasks
+gulp.task('watch', function() {
+    gulp.watch(folder.src + 'images/**/*', ['images']);
+
+    gulp.watch(folder.src + 'templates/**/*', ['html']);
+    
+    gulp.watch(folder.src + 'js/**/*', ['js']);
+
+    gulp.watch(folder.src + 'scss/**/*', ['css']);
+
+});
+
+gulp.task('default', ['run', 'watch']);

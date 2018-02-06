@@ -1,0 +1,11 @@
+.header {
+  height: 10vh;
+  background-image: url("Posing_Rayman.png");
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start; }
