@@ -5,14 +5,14 @@ var // Modules
     imagemin = require('gulp-imagemin'),
     htmlclean = require('gulp-htmlclean'),
     concat = require('gulp-concat'),
-    deporder = require('gulp-deporder'),
+    deporder = require('gulp-deporder'), // Estudar plugin.
     stripdebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
-    postcss = require('gulp-postcss'),
-    assets = require('postcss-assets'),
+    postcss = require('gulp-postcss'), // Estudar plugin.
+    assets = require('postcss-assets'), // Estudar plugin.
     autoprefixer = require('autoprefixer'),
-    mqpacker = require('css-mqpacker'),
+    mqpacker = require('css-mqpacker'), // Estudar plugin.
     cssnano = require('cssnano'),
 
     // Dev mode?
@@ -104,3 +104,13 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['run', 'watch']);
+
+// Remover NODE_ENV
+// Inserir Transpiler ES6 to ES5
+// Estudar plugin sinalizados acima.
+// Inserir ESLint para codar conforme algum Styleguide.
+
+// Use gulp in HTML just for clean it.
+
+// Package.json
+// Inserir Hook no git para rodar gulp novamente antes de um push, para nao subir código quebrado.
