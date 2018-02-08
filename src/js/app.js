@@ -1,3 +1,4 @@
+// requires: lib.js app.js
 {
     let helloWorld = 'hello world';
     

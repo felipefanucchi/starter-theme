@@ -5,7 +5,7 @@ var // Modules
     imagemin = require('gulp-imagemin'),
     htmlclean = require('gulp-htmlclean'),
     concat = require('gulp-concat'),
-    deporder = require('gulp-deporder'), // Estudar plugin.
+    //deporder = require('gulp-deporder'),
     stripdebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
@@ -13,7 +13,6 @@ var // Modules
     assets = require('postcss-assets'), // Estudar plugin.
     autoprefixer = require('autoprefixer'),
     mqpacker = require('css-mqpacker'), // Estudar plugin.
-    cssnano = require('cssnano'),
     babel = require('gulp-babel'),
 
     // Dev mode?
@@ -35,24 +34,10 @@ gulp.task('images', function() {
         .pipe(gulp.dest(out));
 });
 
-// // HTML Processing
-// gulp.task('html', ['images'],function() {
-//     var out = folder.dist + 'templates/',
-//         page = gulp.src(folder.src + 'templates/**/*')
-//         .pipe(newer(out));
-    
-//     // Minify prod code
-//     if(!devBuild) {
-//         page = page.pipe(htmlclean());
-//     }
-
-//     return page.pipe(gulp.dest(out));
-// });
-
 // JavaScript processing
 gulp.task('js', function() {
     var jsbuild = gulp.src(folder.src + 'js/**/*')
-    .pipe(deporder())
+    //.pipe(deporder())
     .pipe(concat('script.js'))
     .pipe(babel({
         presets: ['env']
@@ -70,16 +55,20 @@ gulp.task('js', function() {
 
 // CSS Task
 gulp.task('css', ['images'], function() {
+    var styleCss = 'nested';
     var postCssOpts = [
         assets({ loadPaths: ['images/'] }),
         autoprefixer({ browsers: ['last 2 versions', '> 2%'] }),
-        mqpacker,
-        cssnano
+        mqpacker
     ];
+
+    if(!devBuild) {
+        styleCss = 'compressed'
+    }
 
     return gulp.src(folder.src + 'scss/main.scss')
         .pipe(sass({
-            outputStyle: 'nested',
+            outputStyle: styleCss,
             imagePath: 'images/',
             precision: 3,
             errLogToConsole: true
@@ -89,14 +78,11 @@ gulp.task('css', ['images'], function() {
 });
 
 // Run all Tasks
-
 gulp.task('run', ['css', 'js']);
 
 // Watch All Tasks
 gulp.task('watch', function() {
     gulp.watch(folder.src + 'images/**/*', ['images']);
-
-    //gulp.watch(folder.src + 'templates/**/*', ['html']);
     
     gulp.watch(folder.src + 'js/**/*', ['js']);
 
@@ -106,5 +92,4 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['run', 'watch']);
 
-// Criar Task para PROD
 // Estudar plugin sinalizados acima.
