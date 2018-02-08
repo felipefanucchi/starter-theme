@@ -69,11 +69,12 @@ gulp.task('css', ['images'], function() {
     var postCssOpts = [
         assets({ loadPaths: ['images/'] }),
         autoprefixer({ browsers: ['last 2 versions', '> 2%'] }),
-        mqpacker
+        mqpacker,
+        cssnano
     ];
     
     if(!devBuild) {
-        postCssOpts.push(cssnano);
+        postCssOpts.push();
     }
 
     return gulp.src(folder.src + 'scss/main.scss')
@@ -108,9 +109,3 @@ gulp.task('default', ['run', 'watch']);
 // Remover NODE_ENV
 // Inserir Transpiler ES6 to ES5
 // Estudar plugin sinalizados acima.
-// Inserir ESLint para codar conforme algum Styleguide.
-
-// Use gulp in HTML just for clean it.
-
-// Package.json
-// Inserir Hook no git para rodar gulp novamente antes de um push, para nao subir código quebrado.
