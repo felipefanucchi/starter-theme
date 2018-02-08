@@ -90,7 +90,7 @@ gulp.task('css', ['images'], function() {
 
 // Run all Tasks
 
-gulp.task('run', ['html', 'css', 'js']);
+gulp.task('run', ['css', 'js']);
 
 // Watch All Tasks
 gulp.task('watch', function() {
