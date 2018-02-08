@@ -11,6 +11,4 @@
 
     console.log(saying);
 }
-'use strict';
-
 var lib = require('jQuery');
