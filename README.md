@@ -4,7 +4,7 @@ Isto é um pacote com dependencias para ajudar para um desenvolvimento uniforme 
 
 Por enquanto deverá seguir os padrões e estrutura de pastas manualmente.
 
-** [Utilizar esta estrutura de pastas para o SASS](https://github.com/felipefanucchi/pulso-test) **
+[Utilizar esta estrutura de pastas para o SASS](https://github.com/felipefanucchi/pulso-test)
 
 Pesquisar e estudar a respeito de módulos com JS.
 
