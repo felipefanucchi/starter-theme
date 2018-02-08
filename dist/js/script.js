@@ -1,12 +1,1 @@
-{
-    var helloWorld = 'hello world';
-    
-    const say = () => (speak) {
-        return speak;
-    }
-    
-    var saying = say(speak);
-    
-    console.log(saying);
-}
-var lib = require('jQuery');
+"use strict";var helloWorld="hello world",say=function(r){return r},saying=say(speak);console.log(saying);var lib=require("jQuery");

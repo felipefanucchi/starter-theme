@@ -1,7 +1,7 @@
 {
-    var helloWorld = 'hello world';
+    let helloWorld = 'hello world';
     
-    const say = () => (speak) {
+    const say = (speak) => {
         return speak;
     }
     

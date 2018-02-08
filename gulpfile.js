@@ -14,6 +14,7 @@ var // Modules
     autoprefixer = require('autoprefixer'),
     mqpacker = require('css-mqpacker'), // Estudar plugin.
     cssnano = require('cssnano'),
+    babel = require('gulp-babel'),
 
     // Dev mode?
     devBuild = (process.env.NODE_ENV !== 'production'),
@@ -34,31 +35,34 @@ gulp.task('images', function() {
         .pipe(gulp.dest(out));
 });
 
-// HTML Processing
-gulp.task('html', ['images'],function() {
-    var out = folder.dist + 'templates/',
-        page = gulp.src(folder.src + 'templates/**/*')
-        .pipe(newer(out));
+// // HTML Processing
+// gulp.task('html', ['images'],function() {
+//     var out = folder.dist + 'templates/',
+//         page = gulp.src(folder.src + 'templates/**/*')
+//         .pipe(newer(out));
     
-    // Minify prod code
-    if(!devBuild) {
-        page = page.pipe(htmlclean());
-    }
+//     // Minify prod code
+//     if(!devBuild) {
+//         page = page.pipe(htmlclean());
+//     }
 
-    return page.pipe(gulp.dest(out));
-});
+//     return page.pipe(gulp.dest(out));
+// });
 
 // JavaScript processing
 gulp.task('js', function() {
     var jsbuild = gulp.src(folder.src + 'js/**/*')
     .pipe(deporder())
+    .pipe(babel({
+        presets: ['env']
+    }))
     .pipe(concat('script.js'));
-
+    
     // Uglify and remove consoles/debugger in prod mode
     if (!devBuild) {
         jsbuild = jsbuild
-            .pipe(stripdebug())
-            .pipe(uglify());
+            .pipe(uglify())
+            .pipe(stripdebug());
     }
 
     return jsbuild.pipe(gulp.dest(folder.dist + 'js/'));
@@ -72,10 +76,6 @@ gulp.task('css', ['images'], function() {
         mqpacker,
         cssnano
     ];
-    
-    if(!devBuild) {
-        postCssOpts.push();
-    }
 
     return gulp.src(folder.src + 'scss/main.scss')
         .pipe(sass({
@@ -96,7 +96,7 @@ gulp.task('run', ['html', 'css', 'js']);
 gulp.task('watch', function() {
     gulp.watch(folder.src + 'images/**/*', ['images']);
 
-    gulp.watch(folder.src + 'templates/**/*', ['html']);
+    //gulp.watch(folder.src + 'templates/**/*', ['html']);
     
     gulp.watch(folder.src + 'js/**/*', ['js']);
 
@@ -106,6 +106,5 @@ gulp.task('watch', function() {
 
 gulp.task('default', ['run', 'watch']);
 
-// Remover NODE_ENV
-// Inserir Transpiler ES6 to ES5
+// Criar Task para PROD
 // Estudar plugin sinalizados acima.

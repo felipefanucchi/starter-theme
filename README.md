@@ -6,11 +6,7 @@ Por enquanto deverá seguir os padrões e estrutura de pastas manualmente.
 
 
 ### Prerequisites
-Ter o 
-```
-Node
-```
-instalado e o plugin ```editorConfig``` pois haverá sempre um arquivo **.editorconfig** que fará a padronização de espaços, quebra de linhas e charsets por exemplo.
+Ter o ```Node``` instalado e o plugin ```editorConfig``` pois haverá sempre um arquivo **.editorconfig** que fará a padronização de espaços, quebra de linhas e charsets por exemplo.
 
 ### Installing
 
