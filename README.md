@@ -28,7 +28,7 @@ Para iniciarmos com um bom desenvolvimento, devemos seguir algumas boas prática
 
 * ```Git``` para o versionamento do projeto;
 * ```Npm``` para controle das informações do projeto;
-* ```Gulp``` para automatizar tarefas, como ```scss, minify, codeclean, eslint, autoprefixers ``` e etc...;
+* ```Gulp``` para automatizar tarefas, como ```scss, minify, codeclean, autoprefixers ``` e etc...;
 * ```gitignore``` pois não queremos nossa pasta ```node_modules``` em nosso repositório, por ex.
 
 
