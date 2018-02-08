@@ -51,6 +51,9 @@ OOCSS
 ```
 SMACSS
 ```
+```
+ATOMIC (Estudar afundo. Inserir em breve.)
+```
 
 ##### JS
 
