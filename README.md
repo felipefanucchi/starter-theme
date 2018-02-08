@@ -51,12 +51,15 @@ SMACSS
 ##### JS
 
 ```
-ES6 to ES5 (aprimorar)```
+ES6 to ES5 (aprimorar)
 ```
 jQuery (se necessário)
 ```
 ```
 Airbnb Styleguide (não necessário ainda)
+```
+```
+Módulos com JS (Estudar mais afundo)
 ```
 
 ## Authors
