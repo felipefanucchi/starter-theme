@@ -53,10 +53,10 @@ gulp.task('images', function() {
 gulp.task('js', function() {
     var jsbuild = gulp.src(folder.src + 'js/**/*')
     .pipe(deporder())
+    .pipe(concat('script.js'))
     .pipe(babel({
         presets: ['env']
-    }))
-    .pipe(concat('script.js'));
+    }));
     
     // Uglify and remove consoles/debugger in prod mode
     if (!devBuild) {
