@@ -9,8 +9,8 @@ var // Modules
     stripdebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
-    postcss = require('gulp-postcss'), // Estudar plugin.
-    assets = require('postcss-assets'), // Estudar plugin.
+    postcss = require('gulp-postcss'), 
+    assets = require('postcss-assets'),
     autoprefixer = require('autoprefixer'),
     mqpacker = require('css-mqpacker'), // Estudar plugin.
     babel = require('gulp-babel'),
@@ -56,9 +56,15 @@ gulp.task('js', function() {
 // CSS Task
 gulp.task('css', ['images'], function() {
     var styleCss = 'nested';
-    var postCssOpts = [
-        assets({ loadPaths: ['images/'] }),
-        autoprefixer({ browsers: ['last 2 versions', '> 2%'] }),
+    var options = { 
+        relative: true,
+        basePath: 'dist/', 
+        loadPaths: ['images/', 'fonts/'], 
+        cachebuster: true
+    };
+    var plugins = [
+        assets(options),
+        autoprefixer({ browsers: ['last 2 versions', '> 2%'], cascade: false }),
         mqpacker
     ];
 
@@ -73,7 +79,7 @@ gulp.task('css', ['images'], function() {
             precision: 3,
             errLogToConsole: true
         }))
-        .pipe(postcss(postCssOpts))
+        .pipe(postcss(plugins))
         .pipe(gulp.dest(folder.dist + 'css/'));
 });
 
@@ -91,5 +97,3 @@ gulp.task('watch', function() {
 });
 
 gulp.task('default', ['run', 'watch']);
-
-// Estudar plugin sinalizados acima.

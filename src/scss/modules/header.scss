@@ -1,6 +1,6 @@
 .header {
-    height: 10vh;
-    background-image: url('Posing_Rayman.png');
+    height: 40vh;
+    background: resolve('Posing_Rayman.png') no-repeat center center /cover;
     display: flex;
     flex-basis: 100%;
     justify-content: flex-start;
