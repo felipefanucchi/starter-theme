@@ -17,6 +17,8 @@ var // Modules
 
     // Dev mode?
     devBuild = (process.env.NODE_ENV !== 'production'),
+    // Windows Powershell
+    // $env:NODE_ENV="production"
 
     // Folders
     folder = {
