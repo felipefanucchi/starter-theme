@@ -43,17 +43,9 @@ Este pacote seguirá um padrão de desenvolvimento, são eles, para um desenvolv
 ##### CSS
 
 ```
-BEM
+SUITCSS
 ```
-```
-OOCSS
-```
-```
-SMACSS
-```
-```
-ATOMIC (Estudar afundo. Inserir em breve.)
-```
+if you don't know, [learn here](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md#u-utilityName)
 
 ##### JS
 
