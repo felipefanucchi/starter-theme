@@ -14,7 +14,7 @@ var // Modules
     autoprefixer = require('autoprefixer'),
     mqpacker = require('css-mqpacker'), // Estudar plugin.
     babel = require('gulp-babel'),
-    svgSprites = require('gulp-svg-sprite'),
+    svgSprites = require('gulp-svg-sprites'),
 
     // Dev mode?
     devBuild = (process.env.NODE_ENV !== 'production'),
@@ -86,24 +86,21 @@ gulp.task('css', ['images', 'sprites'], function() {
         .pipe(gulp.dest(folder.dist + 'css/'));
 });
 
-//SVG sprites https://github.com/jkphl/gulp-svg-sprite
+//SVG sprite
 gulp.task('sprites', function() {
-  var svgOptions = {
-    mode: {
-      symbol: {
-        dest: 'sprite',
-        sprite: 'sprite.svg',
-        example: true
-      }
+  var config = {
+    transformData: function (data, config) {
+      console.log(data, config);
+      return data
     },
-    svg: {
-      xmlDeclaration: false,
-      doctypeDeclaration: false
-    }
-  }
+    templates: {
+      css: require('fs').readFileSync(folder.src + 'scss/sprites/template-sprites.scss', 'utf-8')
+    },
+    selector: "icon-%f"
+  };
 
   return gulp.src(folder.src + 'svg/**/*.svg')
-        .pipe(svgSprites(svgOptions))
+        .pipe(svgSprites(config))
         .pipe(gulp.dest(folder.dist + './'));
 });
 
