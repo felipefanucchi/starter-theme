@@ -9,11 +9,12 @@ var // Modules
     stripdebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
-    postcss = require('gulp-postcss'), 
+    postcss = require('gulp-postcss'),
     assets = require('postcss-assets'),
     autoprefixer = require('autoprefixer'),
     mqpacker = require('css-mqpacker'), // Estudar plugin.
     babel = require('gulp-babel'),
+    svgSprites = require('gulp-svg-sprite'),
 
     // Dev mode?
     devBuild = (process.env.NODE_ENV !== 'production'),
@@ -44,7 +45,7 @@ gulp.task('js', function() {
     .pipe(babel({
         presets: ['env']
     }));
-    
+
     // Uglify and remove consoles/debugger in prod mode
     if (!devBuild) {
         jsbuild = jsbuild
@@ -56,12 +57,12 @@ gulp.task('js', function() {
 });
 
 // CSS Task
-gulp.task('css', ['images'], function() {
+gulp.task('css', ['images', 'sprites'], function() {
     var styleCss = 'nested';
-    var options = { 
+    var options = {
         relative: true,
-        basePath: 'dist/', 
-        loadPaths: ['images/', 'fonts/'], 
+        basePath: 'dist/',
+        loadPaths: ['images/', 'fonts/'],
         cachebuster: true
     };
     var plugins = [
@@ -85,14 +86,37 @@ gulp.task('css', ['images'], function() {
         .pipe(gulp.dest(folder.dist + 'css/'));
 });
 
+//SVG sprites https://github.com/jkphl/gulp-svg-sprite
+gulp.task('sprites', function() {
+  var svgOptions = {
+    mode: {
+      symbol: {
+        dest: 'sprite',
+        sprite: 'sprite.svg',
+        example: true
+      }
+    },
+    svg: {
+      xmlDeclaration: false,
+      doctypeDeclaration: false
+    }
+  }
+
+  return gulp.src(folder.src + 'svg/**/*.svg')
+        .pipe(svgSprites(svgOptions))
+        .pipe(gulp.dest(folder.dist + './'));
+});
+
 // Run all Tasks
 gulp.task('run', ['css', 'js']);
 
 // Watch All Tasks
 gulp.task('watch', function() {
     gulp.watch(folder.src + 'images/**/*', ['images']);
-    
+
     gulp.watch(folder.src + 'js/**/*', ['js']);
+
+    gulp.watch(folder.src + 'svg/**/*', ['sprites']);
 
     gulp.watch(folder.src + 'scss/**/*', ['css']);
 
