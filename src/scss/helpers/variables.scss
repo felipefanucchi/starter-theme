@@ -1,0 +1,56 @@
+// Here goes all the variables
+
+// Variables
+
+// Container & grid  
+$container: 970px;
+// Media Queries
+$screen-xs: 767px;
+$screen-sm: 768px;
+$screen-md: 992px;
+$screen-lg: 1200px;
+// Gutter
+$gutter: 15px;
+
+// Colors
+
+// Base
+$clear: #ffffff;
+$dark: #000000;
+// Shadows
+$grey: #404040;
+$grey-light: #f3f3f3;
+// Brand colors
+$color-primary: #bf2323; //RGB(191, 35, 35)
+$color-primary-light: #ef2c2c; //RGB(239, 44, 44)
+$color-secondary: #ffb820; //RGB(255, 186, 35)
+// Types
+
+$text-color: $grey;
+// Cache query string for font face
+$font-cache: fd5a9b;
+// Families
+$font-family-primary: 'Open sans',
+sans-serif;
+// Sizes
+// Base and content font sizes
+$font-size-sm: 1.2rem;
+$font-size-base: 1.6rem;
+$font-size-md: 1.8rem;
+$font-size-lg: 2.0rem;
+$font-size-xlg: 2.2rem;
+// Headings font sizes
+$font-size-headings :(
+    h1: $font-size-h1,
+    h2: $font-size-h2,
+    h3: $font-size-h3,
+    h4: $font-size-h4,
+    h5: $font-size-h5,
+    h6: $font-size-h6
+);
+$font-size-h1: 4.2rem;
+$font-size-h2: 3.0rem;
+$font-size-h3: 2.4rem;
+$font-size-h4: $font-size-xlg;
+$font-size-h5: $font-size-md;
+$font-size-h6: $font-size-sm;

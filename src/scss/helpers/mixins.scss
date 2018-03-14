@@ -1,0 +1,4 @@
+// Any kind of mixins.
+@mixin ani() {
+    transition: all ease-out .3s;
+}

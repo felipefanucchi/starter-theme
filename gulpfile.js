@@ -57,7 +57,7 @@ gulp.task('js', function() {
 });
 
 // CSS Task
-gulp.task('css', ['images', 'sprites'], function() {
+gulp.task('css', ['images'], function() {
     var styleCss = 'nested';
     var options = {
         relative: true,
@@ -113,7 +113,7 @@ gulp.task('watch', function() {
 
     gulp.watch(folder.src + 'js/**/*', ['js']);
 
-    gulp.watch(folder.src + 'svg/**/*', ['sprites']);
+    //gulp.watch(folder.src + 'svg/**/*', ['sprites']);
 
     gulp.watch(folder.src + 'scss/**/*', ['css']);
 

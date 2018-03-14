@@ -1,0 +1,22 @@
+@import '../common';
+
+.content {
+    $this: &;
+
+    @each $key, $value in $font-size-headings {
+        #{$key}{
+            font-size: $value;
+        }
+    }
+
+    p{
+        font-size: $font-size-base;
+        color: $grey;
+        margin-bottom: $gutter*2;
+    }
+
+    @media screen and (max-width: $screen-xs) {}
+    @media screen and (min-width: $screen-sm) {}
+    @media screen and (min-width: $screen-md) {}
+    @media screen and (min-width: $screen-lg) {}
+}
