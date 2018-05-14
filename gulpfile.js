@@ -5,7 +5,6 @@ var // Modules
     imagemin = require('gulp-imagemin'),
     htmlclean = require('gulp-htmlclean'),
     concat = require('gulp-concat'),
-    //deporder = require('gulp-deporder'),
     stripdebug = require('gulp-strip-debug'),
     uglify = require('gulp-uglify'),
     sass = require('gulp-sass'),
@@ -39,8 +38,7 @@ gulp.task('images', function() {
 
 // JavaScript processing
 gulp.task('js', function() {
-    var jsbuild = gulp.src(folder.src + 'js/**/*')
-    //.pipe(deporder())
+    var jsbuild = gulp.src(folder.src + 'js/**/*.js')
     .pipe(concat('script.js'))
     .pipe(babel({
         presets: ['env']
@@ -87,22 +85,32 @@ gulp.task('css', ['images'], function() {
 });
 
 //SVG sprite
-gulp.task('sprites', function() {
-  var config = {
-    transformData: function (data, config) {
-      console.log(data, config);
-      return data
-    },
-    templates: {
-      css: require('fs').readFileSync(folder.src + 'scss/sprites/template-sprites.scss', 'utf-8')
-    },
-    selector: "icon-%f"
-  };
+// gulp.task('sprites', function() {
+//   var config = {
+//     transformData: function (data, config) {
+//         console.log(data, config);
+//         done(data)
+//     },
+//     templates: {
+//       css: require('fs').readFileSync(folder.src + 'scss/sprites/template-sprites.scss', 'utf-8')
+//     },
+//     selector: "icon-%f",
+//     baseSize: 16
+//   };
 
-  return gulp.src(folder.src + 'svg/**/*.svg')
-        .pipe(svgSprites(config))
-        .pipe(gulp.dest(folder.dist + './'));
-});
+//   return gulp.src(folder.src + 'svg/**/*.svg')
+//         .pipe(svgSprites(config))
+//         .pipe(gulp.dest(folder.dist + './'));
+// });
+
+// Basic Sprite gen
+// gulp.task('sprite', function() {
+//     return gulp.src(folder.src + 'svg/**/*.svg')
+//         .pipe(svgSprites({
+//             mode: 'symbols'
+//         }))
+//         .pipe(gulp.dest(folder.dist + './'));
+// })
 
 // Run all Tasks
 gulp.task('run', ['css', 'js']);
