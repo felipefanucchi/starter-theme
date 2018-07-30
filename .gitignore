@@ -62,3 +62,6 @@ typings/
 
 # directories
 /dist
+
+# lock json
+package-lock.json

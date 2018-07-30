@@ -1,0 +1,10 @@
+{
+    "paths": {
+        "src": "../src/",
+        "dist": "../dist/"
+    },
+    "entryFiles":[
+        "./index.js"
+    ],
+    "env": "development"
+}

@@ -1,4 +1,4 @@
-# Accelerator Engine for CSS n JS
+# TASK RUNNER
 
 Isto é um pacote com dependencias para ajudar para um desenvolvimento uniforme e mais dinâmico.
 
@@ -50,7 +50,7 @@ if you don't know, [learn here](https://github.com/suitcss/suit/blob/master/doc/
 ##### JS
 
 ```
-ES6 to ES5 (aprimorar)
+ES6 to ES5
 ```
 ```
 jQuery (se necessário)
@@ -59,7 +59,7 @@ jQuery (se necessário)
 Airbnb Styleguide (não necessário ainda, portanto eslint nao sera utilizado no momento)
 ```
 ```
-Módulos com JS (Estudar mais afundo)
+Módulos com JS 
 ```
 
 ## Authors
