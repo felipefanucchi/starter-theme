@@ -1,11 +1,10 @@
 // All the modules from the project
-@import "modules";
+@import 'modules/*';
 
 // Here goes all who prints, but not the modules, all inside the helpers
-
-@import "vendor/vendor";
-@import "helpers/helpers";
+@import 'vendor/vendor';
+@import 'helpers/helpers';
 
 // If it's necessary, import important stylesheet after all.
 
-@import "helpers/important";
+@import 'helpers/important';

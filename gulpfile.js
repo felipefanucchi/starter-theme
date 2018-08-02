@@ -1,130 +1,127 @@
 // Gulp.js configuration
 var // Modules
-    gulp = require('gulp'),
-    newer = require('gulp-newer'),
-    imagemin = require('gulp-imagemin'),
-    htmlclean = require('gulp-htmlclean'),
-    concat = require('gulp-concat'),
-    stripdebug = require('gulp-strip-debug'),
-    uglify = require('gulp-uglify'),
-    sass = require('gulp-sass'),
-    postcss = require('gulp-postcss'),
-    assets = require('postcss-assets'),
-    autoprefixer = require('autoprefixer'),
-    mqpacker = require('css-mqpacker'), // Estudar plugin.
-    babel = require('gulp-babel'),
-    svgSprites = require('gulp-svg-sprites'),
+  gulp = require('gulp'),
+  newer = require('gulp-newer'),
+  imagemin = require('gulp-imagemin'),
+  concat = require('gulp-concat'),
+  stripdebug = require('gulp-strip-debug'),
+  uglify = require('gulp-uglify'),
+  sass = require('gulp-sass'),
+  postcss = require('gulp-postcss'),
+  assets = require('postcss-assets'),
+  autoprefixer = require('autoprefixer'),
+  mqpacker = require('css-mqpacker'),
+  babel = require('gulp-babel'),
+  webserver = require('gulp-webserver'),
+  sassGlob = require('gulp-sass-glob'),
 
-    // Dev mode?
-    devBuild = (process.env.NODE_ENV !== 'production'),
-    // Windows Powershell
-    // $env:NODE_ENV="production"
+  // Dev mode?
+  devBuild = (process.env.NODE_ENV !== 'production'),
+  // Windows Powershell
+  // $env:NODE_ENV="production"
 
-    // Folders
-    folder = {
-        src: 'src/',
-        dist: 'dist/'
-    };
+  // Folders
+  folder = {
+    src: 'src/',
+    dist: 'dist/'
+  };
 
 // Image Processing
-gulp.task('images', function() {
-    var out = folder.dist + 'images/';
+gulp.task('images', function () {
+  var out = folder.dist + 'images/';
 
-    return gulp.src(folder.src + 'images/**/*')
-        .pipe(newer(out))
-        .pipe(imagemin({ optimizationLevel: 5 }))
-        .pipe(gulp.dest(out));
+  return gulp.src(folder.src + 'images/**/*')
+    .pipe(newer(out))
+    .pipe(imagemin({ optimizationLevel: 5 }))
+    .pipe(gulp.dest(out));
 });
 
 // JavaScript processing
-gulp.task('js', function() {
-    var jsbuild = gulp.src(folder.src + 'js/**/*.js')
-    .pipe(concat('script.js'))
+gulp.task('js', ['libs'], function () {
+  var jsbuild = gulp.src([folder.src + 'js/**/*.js'])
+    .pipe(concat('app.js'))
     .pipe(babel({
-        presets: ['env']
+      presets: ['env']
     }));
 
-    // Uglify and remove consoles/debugger in prod mode
-    if (!devBuild) {
-        jsbuild = jsbuild
-            .pipe(uglify())
-            .pipe(stripdebug());
-    }
+  // Uglify and remove consoles/debugger in prod mode
+  if (!devBuild) {
+    jsbuild = jsbuild
+      .pipe(uglify())
+      .pipe(stripdebug());
+  }
 
-    return jsbuild.pipe(gulp.dest(folder.dist + 'js/'));
+  return jsbuild.pipe(gulp.dest(folder.dist + 'js/'));
 });
+
+// Javascript third party processing
+gulp.task('libs', function () {
+  gulp.src([
+    //'node_modules/bootstrap-sass/assets/javascripts/bootstrap.min.js'
+  ])
+    .pipe(concat('bundle.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest(folder.dist + 'js/libs/'));
+})
 
 // CSS Task
-gulp.task('css', ['images'], function() {
-    var styleCss = 'nested';
-    var options = {
-        relative: true,
-        basePath: 'dist/',
-        loadPaths: ['images/', 'fonts/'],
-        cachebuster: true
-    };
-    var plugins = [
-        assets(options),
-        autoprefixer({ browsers: ['last 2 versions', '> 2%'], cascade: false }),
-        mqpacker
-    ];
+gulp.task('css', ['images'], function () {
+  var styleCss = 'nested';
+  var options = {
+    relative: true,
+    basePath: 'dist/',
+    loadPaths: ['images/', 'fonts/'],
+    cachebuster: true
+  };
+  var plugins = [
+    assets(options),
+    autoprefixer({ browsers: ['last 2 versions', '> 2%'], cascade: false }),
+    mqpacker
+  ];
 
-    if(!devBuild) {
-        styleCss = 'compressed'
-    }
+  if (!devBuild) {
+    styleCss = 'compressed'
+  }
 
-    return gulp.src(folder.src + 'scss/main.scss')
-        .pipe(sass({
-            outputStyle: styleCss,
-            imagePath: 'images/',
-            precision: 3,
-            errLogToConsole: true
-        }))
-        .pipe(postcss(plugins))
-        .pipe(gulp.dest(folder.dist + 'css/'));
+  return gulp.src(folder.src + 'scss/main.scss')
+    .pipe(sassGlob())
+    .pipe(sass({
+      outputStyle: styleCss,
+      imagePath: 'images/',
+      precision: 3,
+      errLogToConsole: true,
+      includePaths: ['scss']
+    }))
+    .pipe(postcss(plugins))
+    .pipe(gulp.dest(folder.dist + 'css/'));
 });
 
-//SVG sprite
-// gulp.task('sprites', function() {
-//   var config = {
-//     transformData: function (data, config) {
-//         console.log(data, config);
-//         done(data)
-//     },
-//     templates: {
-//       css: require('fs').readFileSync(folder.src + 'scss/sprites/template-sprites.scss', 'utf-8')
-//     },
-//     selector: "icon-%f",
-//     baseSize: 16
-//   };
+// This is a webserver ONLY for static files.
+gulp.task('serve', function () {
+  gulp.src('../')
+    .pipe(webserver({
+      fallback: 'index.html',
+      livereload: true
+    }));
+});
 
-//   return gulp.src(folder.src + 'svg/**/*.svg')
-//         .pipe(svgSprites(config))
-//         .pipe(gulp.dest(folder.dist + './'));
-// });
-
-// Basic Sprite gen
-// gulp.task('sprite', function() {
-//     return gulp.src(folder.src + 'svg/**/*.svg')
-//         .pipe(svgSprites({
-//             mode: 'symbols'
-//         }))
-//         .pipe(gulp.dest(folder.dist + './'));
-// })
+// Fonts
+gulp.task('fonts', function () {
+  return gulp.src(folder.src + 'fonts/*')
+    .pipe(gulp.dest(folder.dist + 'fonts/'))
+});
 
 // Run all Tasks
-gulp.task('run', ['css', 'js']);
+gulp.task('run', ['css', 'js', 'fonts']);
 
 // Watch All Tasks
-gulp.task('watch', function() {
-    gulp.watch(folder.src + 'images/**/*', ['images']);
+gulp.task('watch', function () {
+  gulp.watch(folder.src + 'images/**/*', ['images']);
 
-    gulp.watch(folder.src + 'js/**/*', ['js']);
+  gulp.watch(folder.src + 'js/**/*', ['js']);
 
-    //gulp.watch(folder.src + 'svg/**/*', ['sprites']);
-
-    gulp.watch(folder.src + 'scss/**/*', ['css']);
+  gulp.watch(folder.src + 'scss/**/*', ['css']);
 
 });
 
-gulp.task('default', ['run', 'watch']);
+gulp.task('default', ['serve', 'run', 'watch']);
