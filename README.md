@@ -6,8 +6,6 @@ Por enquanto deverá seguir os padrões e estrutura de pastas manualmente.
 
 [Utilizar esta estrutura de pastas para o SCSS](https://github.com/felipefanucchi/pulso-test)
 
-Pesquisar e estudar a respeito de módulos com JS e aprimorar estrutura SCSS.
-
 
 ### Prerequisites
 Ter o ```Node``` instalado e o plugin ```editorConfig``` pois haverá sempre um arquivo **.editorconfig** que fará a padronização de espaços, quebra de linhas e charsets por exemplo.
@@ -50,7 +48,7 @@ if you don't know, [learn here](https://github.com/suitcss/suit/blob/master/doc/
 ##### JS
 
 ```
-ES6 to ES5 (aprimorar)
+ES6 to ES5
 ```
 ```
 jQuery (se necessário)
@@ -59,7 +57,7 @@ jQuery (se necessário)
 Airbnb Styleguide (não necessário ainda, portanto eslint nao sera utilizado no momento)
 ```
 ```
-Módulos com JS (Estudar mais afundo)
+Módulos com JS
 ```
 
 ## Authors
