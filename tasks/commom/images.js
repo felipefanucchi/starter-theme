@@ -5,15 +5,30 @@ import config from '../config.json'
 import path from 'path'
 
 const src = config.paths.src;
-const dest = config.paths.dist;
+const dist = config.paths.dist;
+
+const srcImages = path.resolve(__dirname, `../${src}/images/**/*`);
+const distImages = path.resolve(__dirname, `../${dist}/images`);
 
 const images = e =>
   gulp
-    .src(path.resolve('src/images/'), { allowEmpty: true })
-    .pipe(minify({
-      progressive: true,
-      optimizationLevel: 5
-    }))
-    .pipe(gulp.dest(path.resolve('dist/')))
+    .src(srcImages)
+    .pipe(newer(srcImages))
+    .pipe(
+      minify([
+        minify.gifsicle({ interlaced: true }),
+        minify.jpegtran({ progressive: true }),
+        minify.optipng({ optimizationLevel: 5 }),
+        minify.svgo({
+          plugins: [
+            {
+              removeViewBox: false,
+              collapseGroups: true
+            }
+          ]
+        })
+      ])
+    )
+    .pipe(gulp.dest(distImages));
 
 export default images;

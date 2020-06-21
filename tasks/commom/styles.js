@@ -15,6 +15,7 @@ const isProd = config.env === 'development' ? false : true
 
 const src = config.paths.src
 const dist = config.paths.dist
+const entryFile = config.styles.entryFiles;
 
 const assetsOptions = {
   relative: true,
@@ -46,11 +47,11 @@ if (isProd) {
 
 const styles = () =>
   gulp
-    .src(path.resolve('src/scss/main.scss'), {allowEmpty: true})
+    .src(path.resolve(__dirname, `../${src}/scss/${entryFile}`), {allowEmpty: true})
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(sass(sassOptions))
     .pipe(postcss(postCssPlugins))
     .pipe(gulpif(!isProd, sourcemaps.write()))
-    .pipe(gulp.dest(path.resolve('dist/css/')))
+    .pipe(gulp.dest(path.resolve(__dirname, `../${dist}/css/`)))
 
 export default styles

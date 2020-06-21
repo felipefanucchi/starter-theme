@@ -8,10 +8,10 @@ const dest = config.paths.dist;
 
 let webpackConfig = {
   mode: config.env,
-  entry: config.entryFiles,
+  entry: config.scripts.entryFiles,
   output: {
     path: path.resolve(__dirname, `../${dest}`),
-    filename: 'js/bundle.js'
+    filename: 'js/app.js'
   },
   context: path.resolve(__dirname, `../${src}/js/`)
 }

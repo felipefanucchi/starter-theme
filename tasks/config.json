@@ -1,10 +1,16 @@
 {
-    "paths": {
-        "src": "../src/",
-        "dist": "../dist/"
-    },
-    "entryFiles":[
-        "./index.js"
-    ],
-    "env": "development"
+  "paths": {
+    "src": "../src/",
+    "dist": "../dist/"
+  },
+  "styles": {
+    "entryFiles": ["./main.scss"]
+  },
+  "scripts": {
+    "entryFiles": ["./index.js"]
+  },
+  "env": "development",
+  "vendorScripts": [
+    "/node_modules/jquery/dist/jquery.min.js"
+  ]
 }
