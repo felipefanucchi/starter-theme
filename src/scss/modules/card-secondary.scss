@@ -1,8 +1,0 @@
-@import '../common';
-.card-secondary {
-    $this: &;
-    @media screen and (max-width: $screen-xs) {}
-    @media screen and (min-width: $screen-sm) {}
-    @media screen and (min-width: $screen-md) {}
-    @media screen and (min-width: $screen-lg) {}
-}

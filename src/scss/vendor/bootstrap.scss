@@ -4,19 +4,10 @@
  */
 
 // Reset and dependencies
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/normalize";
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/print";
-// @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/glyphicons";
+@import "../../../node_modules/bootstrap-scss/print";
 // Core CSS
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/scaffolding";
-// @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/type";
-// @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/code";
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/grid";
-// @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/tables";
-// @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/forms";
-// @import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/buttons";
+@import "../../../node_modules/bootstrap-scss/bootstrap-grid";
     // Override bootstrap grid
     @import "../helpers/base";
 // Utility classes
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/utilities";
-@import "../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+@import "../../../node_modules/bootstrap-scss/utilities";

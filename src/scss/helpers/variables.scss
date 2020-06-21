@@ -2,13 +2,14 @@
 
 // Variables
 
-// Container & grid  
-$container: 970px;
+// Container & grid
+$container: 1140px;
 // Media Queries
-$screen-xs: 767px;
-$screen-sm: 768px;
-$screen-md: 992px;
-$screen-lg: 1200px;
+$screen-xs: 0;
+$screen-sm: 576px;
+$screen-md: 768px;
+$screen-lg: 992px;
+$screen-xl: 1200px;
 // Gutter
 $gutter: 15px;
 
@@ -39,6 +40,13 @@ $font-size-base: 1.6rem;
 $font-size-md: 1.8rem;
 $font-size-lg: 2.0rem;
 $font-size-xlg: 2.2rem;
+
+$font-size-h1: 4.2rem;
+$font-size-h2: 3.0rem;
+$font-size-h3: 2.4rem;
+$font-size-h4: $font-size-xlg;
+$font-size-h5: $font-size-md;
+$font-size-h6: $font-size-sm;
 // Headings font sizes
 $font-size-headings :(
     h1: $font-size-h1,
@@ -48,9 +56,3 @@ $font-size-headings :(
     h5: $font-size-h5,
     h6: $font-size-h6
 );
-$font-size-h1: 4.2rem;
-$font-size-h2: 3.0rem;
-$font-size-h3: 2.4rem;
-$font-size-h4: $font-size-xlg;
-$font-size-h5: $font-size-md;
-$font-size-h6: $font-size-sm;

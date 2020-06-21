@@ -1,0 +1,12 @@
+@import "../common.scss";
+.card-secondary {
+  $this: &;
+  @media screen and (max-width: $screen-sm) {
+  }
+  @media screen and (min-width: $screen-md) {
+  }
+  @media screen and (min-width: $screen-lg) {
+  }
+  @media screen and (min-width: $screen-xl) {
+  }
+}
