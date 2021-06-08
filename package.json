@@ -40,14 +40,14 @@
     "gulp-sourcemaps": "^2.6.4",
     "postcss-assets": "^5.0.0",
     "webpack": "^4.14.0",
-    "gulp": "^4.0.2"
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-eslint": "^6.0.0",
+    "gulp-uglify": "^3.0.2"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "bootstrap-scss": "^4.5.0",
-    "gulp-concat": "^2.6.1",
-    "gulp-eslint": "^6.0.0",
-    "gulp-uglify": "^3.0.2",
     "jquery": "^3.5.1"
   }
 }
