@@ -45,8 +45,7 @@ if (isProd) {
   postCssPlugins.push(mqpacker,cssnano)
 }
 
-const styles = () =>
-  gulp
+const styles = () => gulp
     .src(path.resolve(__dirname, `../${src}/scss/${entryFile}`), {allowEmpty: true})
     .pipe(gulpif(!isProd, sourcemaps.init()))
     .pipe(sass(sassOptions))

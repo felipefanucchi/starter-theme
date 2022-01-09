@@ -6,8 +6,6 @@ import path from 'path'
 
 const dist = config.paths.dist;
 
-console.log(config.vendorScripts);
-
 const vendorScripts = () => {
   let fullpath = [];
   for (let scriptPath of config.vendorScripts) {

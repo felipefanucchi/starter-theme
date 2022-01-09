@@ -4,13 +4,13 @@
     "dist": "../dist/"
   },
   "styles": {
-    "entryFiles": ["./main.scss"]
+    "entryFiles": ["./main.scss"],
+    "watch": "src/scss/**/*.scss"
   },
   "scripts": {
-    "entryFiles": ["./index.js"]
+    "entryFiles": ["./index.js"],
+    "watch": "src/scripts/**/*.js"
   },
   "env": "development",
-  "vendorScripts": [
-    "/node_modules/jquery/dist/jquery.min.js"
-  ]
+  "vendorScripts": []
 }
