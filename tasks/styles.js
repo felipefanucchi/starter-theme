@@ -9,7 +9,7 @@ import sourcemaps from 'gulp-sourcemaps'
 import path from 'path'
 import gulpif from 'gulp-if'
 
-import config from '../config.json'
+import config from '../gulp.config.json'
 
 const isProd = config.env === 'development' ? false : true
 

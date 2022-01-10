@@ -1,7 +1,6 @@
 @import '../common.scss';
 .card-primary {
   $this: &;
-  border-radius: 20px;
   @media screen and (max-width: $screen-sm) {
   }
   @media screen and (min-width: $screen-md) {

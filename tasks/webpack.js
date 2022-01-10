@@ -1,6 +1,6 @@
 import path from 'path'
 import webpack from 'webpack'
-import config from '../config.json'
+import config from '../gulp.config.json'
 
 // You may want to change the MODE property when deploy your application
 const src = config.paths.src;

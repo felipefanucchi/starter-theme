@@ -1,5 +1,5 @@
-import { header } from './headerComponent';
-import { footer } from './footerComponent';
+import { header } from './components/header';
+import { footer } from './components/footer';
 
 export default class Testing {
   constructor() {
@@ -8,6 +8,6 @@ export default class Testing {
   }
 }
 
-window.on('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
   new Testing();
 });

@@ -1,7 +1,7 @@
 import gulp from 'gulp';
-import config from '../config.json'
-import styles from './styles';
-import scripts from './webpack';
+import config from '../gulp.config.json'
+import styles from './styles'
+import webpack from './webpack'
 
 export default function watch() {
     gulp.watch(
@@ -10,6 +10,6 @@ export default function watch() {
     );
     gulp.watch(
         config.scripts.watch,
-        scripts
+        webpack
     );
 };

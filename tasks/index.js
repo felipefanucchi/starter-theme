@@ -1,14 +1,17 @@
 import gulp from 'gulp'
-import images from './commom/images'
-import webpack from './commom/webpack'
-import styles from './commom/styles'
-import watch from './commom/watch'
-import vendorScripts from './commom/vendorScripts'
+import images from './images'
+import webpack from './webpack'
+import styles from './styles'
+import watch from './watch'
+import vendorScripts from './vendorScripts'
+import browserSync from './browserSync'
 
 const start = gulp.parallel(
     styles,
     webpack,
     images,
+    browserSync,
+    vendorScripts,
     gulp.series(watch)
 )
 

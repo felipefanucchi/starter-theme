@@ -1,7 +1,7 @@
 import gulp from 'gulp'
 import minify from 'gulp-imagemin'
 import newer from 'gulp-newer'
-import config from '../config.json'
+import config from '../gulp.config.json'
 import path from 'path'
 
 const src = config.paths.src;
