@@ -1,0 +1,16 @@
+@import "../common.scss";
+.content {
+  $this: &;
+
+  @each $key, $value in $font-size-headings {
+    #{$key} {
+      font-size: $value;
+    }
+  }
+
+  p {
+    font-size: $font-size-base;
+    color: $grey;
+    margin-bottom: $gutter * 2;
+  }
+}

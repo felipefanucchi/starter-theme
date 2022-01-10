@@ -1,0 +1,16 @@
+{
+  "paths": {
+    "src": "src/",
+    "dist": "dist/"
+  },
+  "styles": {
+    "entryFiles": ["./main.scss"],
+    "watch": "src/scss/**/*.scss"
+  },
+  "scripts": {
+    "entryFiles": ["./index.js"],
+    "watch": "src/js/**/*.js"
+  },
+  "env": "development",
+  "vendorScripts": []
+}

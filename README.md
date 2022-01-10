@@ -1,4 +1,4 @@
-# Accelerator Engine for CSS n JS
+# TASK RUNNER
 
 Isto é um pacote com dependencias para ajudar para um desenvolvimento uniforme e mais dinâmico.
 
@@ -41,9 +41,8 @@ Este pacote seguirá um padrão de desenvolvimento, são eles, para um desenvolv
 ##### CSS
 
 ```
-SUITCSS
+BEM
 ```
-if you don't know, [learn here](https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md#u-utilityName)
 
 ##### JS
 

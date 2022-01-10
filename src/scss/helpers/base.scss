@@ -1,28 +1,12 @@
-@import '../common';
 // font
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700i,800');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,700i,800");
 
 // Reseting the font-size,
 // Like this you can use REM like that
 // 1rem = 10px
 
 html,
-body{
-    font-size: 62.5%;
-    font-family: $font-family-primary;
-}
-
-// Container width
-// Set the container width.
-.container {
-    @include container-fixed;
-    @media (min-width: $screen-sm-min) {
-        width: $container-sm;
-    }
-    @media (min-width: $screen-md-min) {
-        width: $container-md;
-    }
-    @media (min-width: $screen-lg-min) {
-        width:$container;
-    }
+body {
+  font-size: 62.5%;
+  font-family: $font-family-primary;
 }

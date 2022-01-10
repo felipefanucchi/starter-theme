@@ -1,20 +1,20 @@
 // Helpers in General
-.overflow-hidden{
-    overflow: hidden;
+.overflow-hidden {
+  overflow: hidden;
 }
 
-@media screen and (max-width: $screen-xs) {
-    .flex-center-xs {
-        display: flex;
-        justify-content: center;
-    }
-}
-
-@media screen and (min-width: $screen-sm) {
+@media screen and (max-width: $screen-sm) {
+  .flex-center-xs {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 @media screen and (min-width: $screen-md) {
-
 }
 
-@media screen and (min-width: $screen-lg) {}
+@media screen and (min-width: $screen-lg) {
+}
+
+@media screen and (min-width: $screen-xl) {
+}
