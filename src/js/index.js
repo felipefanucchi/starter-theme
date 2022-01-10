@@ -1,7 +1,7 @@
 import { header } from './components/header';
 import { footer } from './components/footer';
 
-export default class Testing {
+export default class Main {
   constructor() {
     header();
     footer();
@@ -9,5 +9,5 @@ export default class Testing {
 }
 
 window.addEventListener('DOMContentLoaded', () => {
-  new Testing();
+  new Main();
 });

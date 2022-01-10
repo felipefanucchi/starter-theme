@@ -1,13 +1,5 @@
 // Helpers in General
-.overflow-hidden {
-  overflow: hidden;
-}
-
 @media screen and (max-width: $screen-sm) {
-  .flex-center-xs {
-    display: flex;
-    justify-content: center;
-  }
 }
 
 @media screen and (min-width: $screen-md) {
